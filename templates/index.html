@@ -3,22 +3,41 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>HISA - Insight do Dia</title>
+    <title>HISA - Trilha Diária</title>
     <style>
-        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background-color: #f4f7f6; color: #333; display: flex; justify-content: center; padding: 20px; }
-        .card { background: white; padding: 30px; border-radius: 15px; box-shadow: 0 4px 6px rgba(0,0,0,0.1); max-width: 400px; width: 100%; }
-        h1 { color: #2c3e50; font-size: 1.5rem; }
-        .tag { background: #e1f5fe; color: #01579b; padding: 5px 10px; border-radius: 5px; font-size: 0.8rem; font-weight: bold; }
-        .btn { display: block; width: 100%; padding: 15px; background: #007bff; color: white; text-align: center; border-radius: 8px; text-decoration: none; margin-top: 20px; font-weight: bold; }
+        :root { --primary: #2563eb; --bg: #f8fafc; --text: #1e293b; }
+        body { font-family: sans-serif; background: var(--bg); color: var(--text); margin: 0; display: flex; justify-content: center; align-items: center; min-height: 100vh; }
+        .container { background: white; width: 90%; max-width: 450px; padding: 2rem; border-radius: 1.5rem; box-shadow: 0 10px 15px -3px rgba(0,0,0,0.1); }
+        .tag { background: #dbeafe; color: var(--primary); padding: 0.25rem 0.75rem; border-radius: 1rem; font-size: 0.75rem; font-weight: bold; text-transform: uppercase; }
+        h2 { margin: 1rem 0 0.5rem 0; font-size: 1.5rem; }
+        .box { background: #f1f5f9; padding: 1rem; border-radius: 1rem; margin: 1rem 0; border-left: 4px solid var(--primary); }
+        .pratica { background: #f0fdf4; border-left-color: #22c55e; }
+        .btn { display: block; background: var(--primary); color: white; text-align: center; padding: 1rem; border-radius: 1rem; text-decoration: none; font-weight: bold; transition: opacity 0.2s; }
+        .btn:active { opacity: 0.8; }
     </style>
 </head>
 <body>
-    <div class="card">
-        <span class="tag">CIÊNCIA COGNITIVA</span>
-        <h1>{{ titulo }}</h1>
-        <p><strong>Gatilhos:</strong> {{ gatilhos|join(', ') }}</p>
-        <p><em>{{ desafio }}</em></p>
-        <a href="#" class="btn" onclick="alert('Ofensiva mantida! Amanhã tem mais.')">Concluir Meta Diária</a>
+    <div class="container">
+        <span class="tag">Dia {{ dia }} - {{ tema }}</span>
+        <h2>{{ titulo }}</h2>
+        
+        <div class="box">
+            <strong>O que a ciência diz:</strong><br>
+            {{ ciencia }}
+        </div>
+
+        <div class="box pratica">
+            <strong>Desafio Prático:</strong><br>
+            {{ pratica }}
+        </div>
+
+        <a href="#" class="btn" onclick="confirmar()">Concluir do Dia</a>
     </div>
+
+    <script>
+        function confirmar() {
+            alert("Parabéns! Você concluiu sua meta diária do HISA. Amanhã liberamos o próximo passo.");
+        }
+    </script>
 </body>
 </html>
